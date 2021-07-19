@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d11886f8-53db-4fc0-a454-f645eb95a935" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/DirectoryComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/DirectoryComponent.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +53,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="471" y="132" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1626698357074" />
-    <state x="555" y="44" key="SettingsEditor" timestamp="1626704784386">
+    <state x="555" y="44" key="SettingsEditor" timestamp="1626706152706">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="555" y="44" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1626704784386" />
+    <state x="555" y="44" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1626706152706" />
   </component>
 </project>
