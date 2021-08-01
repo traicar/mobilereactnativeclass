@@ -25,7 +25,6 @@ class Reservation extends Component {
 
     toggleModal() {
         this.setState({ showModal: !this.state.showModal });
-
     }
 
     handleReservation() {
@@ -38,7 +37,7 @@ class Reservation extends Component {
             campers: 1,
             hikeIn: false,
             date: new Date(),
-            showCalendar: false,     
+            showCalendar: false,
             showModal: false
         });
     }
