@@ -328,85 +328,83 @@ class Main extends Component {
 
         this.showNetInfo();
 
-        this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
-            this.handleConnectivityChange(connectionInfo);
-        });
-    }
+            this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
+                this.handleConnectivityChange(connectionInfo);
+            });
+        }
 
-    componentWillUnmount() {
-        this.unsubscribeNetInfo();
-    }
+        componentWillUnmount() {
+            this.unsubscribeNetInfo();
+        }
 
-    showNetInfo = async () => {
-        let connectionInfo = await NetInfo.fetch();
-        if (connectionInfo) {
+        showNetInfo = async () => {
+            let connectionInfo = await NetInfo.fetch();
             (Platform.OS === 'ios')
                 ? Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
                 : ToastAndroid.show('Initial Network Connectivity Type: ' +
                     connectionInfo.type, ToastAndroid.LONG);
-        };
-    }
-
-    handleConnectivityChange = connectionInfo => {
-        let connectionMsg = 'You are now connected to an active network.';
-        switch (connectionInfo.type) {
-            case 'none':
-                connectionMsg = 'No network connection is active.';
-                break;
-            case 'unknown':
-                connectionMsg = 'The network connection state is now unknown.';
-                break;
-            case 'cellular':
-                connectionMsg = 'You are now connected to a cellular network.';
-                break;
-            case 'wifi':
-                connectionMsg = 'You are now connected to a WiFi network.';
-                break;
         }
-        (Platform.OS === 'ios')
-            ? Alert.alert('Connection change:', connectionMsg)
-            : ToastAndroid.show(connectionMsg, ToastAndroid.LONG);
+
+        handleConnectivityChange = connectionInfo => {
+            let connectionMsg = 'You are now connected to an active network.';
+            switch (connectionInfo.type) {
+                case 'none':
+                    connectionMsg = 'No network connection is active.';
+                    break;
+                case 'unknown':
+                    connectionMsg = 'The network connection state is now unknown.';
+                    break;
+                case 'cellular':
+                    connectionMsg = 'You are now connected to a cellular network.';
+                    break;
+                case 'wifi':
+                    connectionMsg = 'You are now connected to a WiFi network.';
+                    break;
+            }
+            (Platform.OS === 'ios')
+                ? Alert.alert('Connection change:', connectionMsg)
+                : ToastAndroid.show(connectionMsg, ToastAndroid.LONG);
+        }
+
+        render() {
+            return (
+                <View style={{
+                    flex: 1,
+                    paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
+                }}>
+                    <AppNavigator />
+                </View>
+            );
+        }
     }
 
-    render() {
-        return (
-            <View style={{
-                flex: 1,
-                paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
-            }}>
-                <AppNavigator />
-            </View>
-        );
-    }
-}
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+        },
+        drawerHeader: {
+            backgroundColor: '#5637DD',
+            height: 140,
+            alignItems: 'center',
+            justifyContent: 'center',
+            flex: 1,
+            flexDirection: 'row'
+        },
+        drawerHeaderText: {
+            color: '#fff',
+            fontSize: 24,
+            fontWeight: 'bold'
+        },
+        drawerImage: {
+            margin: 10,
+            height: 60,
+            width: 60
+        },
+        stackIcon: {
+            marginLeft: 10,
+            color: '#fff',
+            fontSize: 24
+        }
+    });
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    drawerHeader: {
-        backgroundColor: '#5637DD',
-        height: 140,
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-        flexDirection: 'row'
-    },
-    drawerHeaderText: {
-        color: '#fff',
-        fontSize: 24,
-        fontWeight: 'bold'
-    },
-    drawerImage: {
-        margin: 10,
-        height: 60,
-        width: 60
-    },
-    stackIcon: {
-        marginLeft: 10,
-        color: '#fff',
-        fontSize: 24
-    }
-});
-
-export default connect(null, mapDispatchToProps)(Main);
+    export default connect(null, mapDispatchToProps)(Main);
